@@ -5,6 +5,8 @@ stages:
   - job: Build_Test_Deploy
     displayName: Build Test, and Deploy
     steps:
-    - script: python3 ./main.py
+    - script: |
+        echo 'Build $(API_DIRECTORY) API'
+        # python3 ./main.py
       workingDirectory: $(API_DIRECTORY)
 
