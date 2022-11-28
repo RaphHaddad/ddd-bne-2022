@@ -2,7 +2,7 @@ stages:
 - stage: Build_Test_Deploy
   displayName: 'Build, Test, and Deploy'
   jobs:
-  - job: TestCore
+  - job: Build_Test_Deploy
     displayName: Build Test, and Deploy
     steps:
     - script: python3 ./main.py
