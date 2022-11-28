@@ -5,6 +5,6 @@ stages:
   - job: TestCore
     displayName: Build Test, and Deploy
     steps:
-    - task: Bash@3
-      script: |
-        echo 'hi'
+    - script: ./main
+      workingDirectory: $(API_DIRECTORY)
+

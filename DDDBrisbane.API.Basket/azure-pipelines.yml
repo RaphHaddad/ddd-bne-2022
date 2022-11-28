@@ -2,7 +2,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  - name: apidirectory
+  - name: API_DIRECTORY
     value: 'DDDBrisbane.API.Basket'
 
 trigger:
