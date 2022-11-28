@@ -18,3 +18,4 @@ The DDD Brisbane [monorepository](https://en.wikipedia.org/wiki/Monorepo)
 To update the repositories above run this on Bash:
 
 > ls -d */ | xargs -L1 -I{}  echo "| {} | Add description |"
+

@@ -1,12 +1,38 @@
 stages:
-- stage: Build_Test_Deploy
-  displayName: 'Build, Test, and Deploy'
+- stage: Test_and_Build
+  displayName: 'Test and Build'
   jobs:
-  - job: Build_Test_Deploy
-    displayName: Build Test, and Deploy
+  - job: Test_and_Build
+    displayName: 'Test and Build'
     steps:
     - script: |
         echo 'Build $(API_DIRECTORY) API'
-        # python3 ./main.py
+        python3 -m compileall ./
+      displayName: 'Build'
       workingDirectory: $(API_DIRECTORY)
 
+- stage: Deploy
+  displayName: 'Deploy'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+  dependsOn: Test_and_Build
+  jobs:
+  - deployment: Deploy
+    displayName: Deploy
+    environment: Raph-Environment
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - checkout: self
+            persistCredentials: true
+          - script: |
+              git tag -d '$(Build.DefinitionName)/latest' 2> /dev/null
+              git push --delete origin '$(Build.DefinitionName)/latest' 2> /dev/null
+              git tag '$(Build.DefinitionName)/latest'
+
+              git tag '$(Build.DefinitionName)/$(Build.BuildNumber)'
+              git push --tags
+            displayName: Git tag build
+          - script: |
+              python3 ./main.py
+            workingDirectory: $(API_DIRECTORY)
