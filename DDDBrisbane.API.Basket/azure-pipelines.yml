@@ -1,0 +1,27 @@
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  - name: apidirectory
+    value: 'DDDBrisbane.API.Basket'
+
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+    - DDDBrisbane.API.Basket
+    - Core
+    
+pr:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+      - DDDBrisbane.API.Basket
+      - Core
+      
+extends:
+  template: ../Deployment/azure-pipelines.yml
