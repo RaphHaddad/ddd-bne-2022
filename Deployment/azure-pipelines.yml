@@ -5,6 +5,6 @@ stages:
   - job: TestCore
     displayName: Build Test, and Deploy
     steps:
-    - script: ./main
+    - script: python3 ./main.py
       workingDirectory: $(API_DIRECTORY)
 
