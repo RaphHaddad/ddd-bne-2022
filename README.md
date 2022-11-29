@@ -6,16 +6,15 @@ The DDD Brisbane [monorepository](https://en.wikipedia.org/wiki/Monorepo)
 
 | Repository | Description |
 |-|-|
-| Basket/ | Basket API |
-| Core/ | Core coe |
-| Customer/ | Customer API |
-| Deployment/ | Common Deployment YAML files |
-| Docs/ | Documentation regarding solution |
-| Product/ | Product API |
-| Review/ | Review API |
-| Store/ | Store API |
+| Core/ | Core packages |
+| DDDBrisbane.API.Basket/    | Basket API |
+| DDDBrisbane.API.Customer/ | Customer API |
+| DDDBrisbane.API.Delivery/ | Delivery API |
+| DDDBrisbane.API.Product/   | Product API |
+| DDDBrisbane.API.Review/   | Review API |
+| Deployment/ | Common Deployment Definitions |
+| Docs/ | Documentation |
 
 To update the repositories above run this on Bash:
 
 > ls -d */ | xargs -L1 -I{}  echo "| {} | Add description |"
-

@@ -1,0 +1,27 @@
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  - name: API_DIRECTORY
+    value: 'DDDBrisbane.API.Delivery'
+
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+    - DDDBrisbane.API.Review
+    - Core
+    
+pr:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+      - DDDBrisbane.API.Review
+      - Core
+      
+extends:
+  template: ../Deployment/azure-pipelines.yml
